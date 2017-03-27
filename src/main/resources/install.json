@@ -1,0 +1,64 @@
+{
+  "settings": {
+    "index": {
+      "analysis": {
+        "tokenizer": {
+          "comma": {
+            "type": "pattern",
+            "pattern": " *, *"
+          }
+        },
+        "analyzer": {
+          "comma": {
+            "tokenizer": "comma",
+            "filter": [
+              "lowercase"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "mappings": {
+    "resume": {
+      "date_detection": false,
+      "properties": {
+        "mod_date": {
+	  "type":   "date"
+	},
+        "rubrics": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "specialities": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                }
+              }
+            }
+          }
+        },
+        "schedule": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "index": "not_analyzed"
+            }
+          }
+        },
+        "header": {
+          "type": "string",
+          "analyzer": "comma"
+        }
+  
+      }
+    }
+  }
+}
